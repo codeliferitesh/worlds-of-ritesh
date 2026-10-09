@@ -1,69 +1,164 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
+import { PORTFOLIO_DATA, Project } from "@/data/portfolio";
+import { scrollToSection } from "@/lib/utils";
+
+// UI Components
+import { TopNav } from "@/components/ui/TopNav";
+import { LeftNavRail } from "@/components/ui/LeftNavRail";
+import { RightSocialRail } from "@/components/ui/RightSocialRail";
+import { MobileMenu } from "@/components/ui/MobileMenu";
+import { ProjectModal } from "@/components/ui/ProjectModal";
+import { FallbackView } from "@/components/ui/FallbackView";
+
+// Portfolio Sections
+import { HeroSection } from "@/components/sections/HeroSection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { SkillsSection } from "@/components/sections/SkillsSection";
+import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { JourneySection } from "@/components/sections/JourneySection";
+import { InterestsSection } from "@/components/sections/InterestsSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+
+// Dynamically import the 3D WebGL Canvas
+const SceneCanvas = dynamic(
+  () => import("@/components/scene/SceneCanvas").then((mod) => mod.SceneCanvas),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="fixed inset-0 z-0 flex items-center justify-center bg-[#08111F] text-[#54E5FF] font-mono text-xs">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 rounded-full border-2 border-[#54E5FF] border-t-transparent animate-spin" />
+          <span className="tracking-widest uppercase text-[#54E5FF]">
+            PREPARING YOUR WORLD...
+          </span>
+        </div>
+      </div>
+    ),
+  }
+);
 
 export default function Home() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("hero");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [webGLEnabled, setWebGLEnabled] = useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Check reduced motion preference
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+      setPrefersReducedMotion(mediaQuery.matches);
+      const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+      mediaQuery.addEventListener("change", listener);
+      return () => mediaQuery.removeEventListener("change", listener);
+    }
+  }, []);
+
+  // Track scroll progress and active section intersection
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? Math.min(Math.max(scrollTop / docHeight, 0), 1) : 0;
+      setScrollProgress(progress);
+
+      // Section intersection determination
+      const sections = ["hero", "about", "skills", "projects", "journey", "interests", "contact"];
+      const scrollPos = scrollTop + window.innerHeight * 0.35;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavigate = useCallback((sectionId: string) => {
+    scrollToSection(sectionId);
+  }, []);
+
+  const handleSelectProjectFrom3D = useCallback((id: string) => {
+    const project = PORTFOLIO_DATA.projects.find((p) => p.id === id);
+    if (project) {
+      setSelectedProject(project);
+    }
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="relative min-h-screen bg-[#08111F] text-[#F5F7FA] overflow-x-hidden selection:bg-[#54E5FF]/20 selection:text-[#54E5FF]">
+      {/* 3D WebGL Canvas or 2.5D Fallback */}
+      {webGLEnabled && !prefersReducedMotion ? (
+        <SceneCanvas
+          scrollProgress={scrollProgress}
+          activeProjectId={selectedProject?.id}
+          onSelectProject={handleSelectProjectFrom3D}
+          onWebGLError={() => setWebGLEnabled(false)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      ) : (
+        <FallbackView />
+      )}
+
+      {/* Top HUD Navigation Bar */}
+      <TopNav
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
+        onOpenMobileMenu={() => setIsMobileMenuOpen(true)}
+      />
+
+      {/* Left Vertical Navigation Rail (Desktop) */}
+      <LeftNavRail
+        activeSection={activeSection}
+        onNavigate={handleNavigate}
+      />
+
+      {/* Right Social Rail (Desktop) */}
+      <RightSocialRail />
+
+      {/* Mobile Slide-out Menu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        activeSection={activeSection}
+        onClose={() => setIsMobileMenuOpen(false)}
+        onNavigate={handleNavigate}
+      />
+
+      {/* Deep Inspection Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
+
+      {/* Page Content Layer */}
+      <div className="relative z-10">
+        <HeroSection
+          onExploreClick={() => handleNavigate("projects")}
+          onConnectClick={() => handleNavigate("contact")}
+        />
+
+        <AboutSection />
+
+        <SkillsSection />
+
+        <ProjectsSection onSelectProject={(p) => setSelectedProject(p)} />
+
+        <JourneySection />
+
+        <InterestsSection />
+
+        <ContactSection onBackToTop={() => handleNavigate("hero")} />
+      </div>
+    </main>
   );
 }

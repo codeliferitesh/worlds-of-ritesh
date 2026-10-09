@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ritesh Kumar Verma — 3D Developer Portfolio 🌌
 
-## Getting Started
+Hey there! 👋 
 
-First, run the development server:
+I'm **Ritesh Kumar Verma**, a Computer Science student at **VIT Bhopal University** specializing in Artificial Intelligence & Machine Learning (Class of 2029).
+
+Instead of making another ordinary flat portfolio with simple cards, I wanted to build an interactive, scroll-driven 3D experience that truly represents my journey across full-stack development, AI/ML, and embedded hardware tinkering (ESP32 / IoT).
+
+Live Demo: [riteshverma.dev](https://riteshverma.dev) *(or check it out locally below!)*
+
+---
+
+## ✨ What's Inside
+
+- **Hero & Arrival**: A sunset sky with floating citadel islands, waterfalls, and an explorer overlooking the world.
+- **The Origin Island (About)**: My background, studies at VIT Bhopal, and the core pillars of what I build.
+- **Technology Constellation (Skills)**: Filterable tech stack spanning React/Next.js, Python, Firebase/SQL, ESP32, and UI/UX in Figma.
+- **Innovation Archipelago (Projects)**: Interactive 3D islands showcasing my real projects:
+  - **MediAI** — Clinical decision-support & hospital management prototype.
+  - **Shipment Health Tracking System** — Real-time telemetry with ESP32 & environmental sensors.
+  - **StackSolve** — Developer discussion & community web app.
+  - **Aether Night** — VS Code dark theme with over 1,000+ downloads.
+  - **AirBoard** — Touchless gesture canvas with MediaPipe hand tracking.
+  - **Drovio** — Direct device-to-device sharing concept.
+- **Builder's Workshop (Journey)**: Milestones, hackathons, and continuous learning.
+- **Creative Lab (Interests)**: Hardware experiments, PCB design, 3D printing, and creative coding.
+- **The Final Beacon (Contact)**: Quick email dispatcher, links to LinkedIn, and GitHub.
+- **Ambient Soundscape**: A subtle Web Audio synth hum and click sounds (muted by default with an easy toggle in the top bar).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript & React 19
+- **3D Engine**: Three.js & React Three Fiber (`@react-three/fiber`, `@react-three/drei`)
+- **Styling**: Tailwind CSS
+- **Audio**: Web Audio API (procedural drone & click sounds, no heavy mp3 files)
+- **Icons**: Lucide React & custom SVGs
+
+---
+
+## 🚀 Running Locally
+
+If you want to clone this and run it on your machine:
+
+1. **Clone the repo**:
+   ```bash
+   git clone https://github.com/codeliferitesh/ritesh-3d-portfolio.git
+   cd ritesh-3d-portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the local dev server**:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 📦 Building for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📬 Let's Connect!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+I'm always excited to collaborate on new ideas, hackathons, or software projects. Feel free to reach out:
 
-## Learn More
+- **Email**: [stacksolveofficial@gmail.com](mailto:stacksolveofficial@gmail.com)
+- **GitHub**: [@codeliferitesh](https://github.com/codeliferitesh)
+- **LinkedIn**: [in/riteshvermadev](https://linkedin.com/in/riteshvermadev/)
+- **Community Project**: [StackSolve](https://stacksolve.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Built with curiosity, coffee, and code by Ritesh Kumar Verma.*
