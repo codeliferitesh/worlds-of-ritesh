@@ -66,7 +66,7 @@ export function TopNav({ activeSection, onNavigate, onOpenMobileMenu }: TopNavPr
             </span>
             <span className="text-[10px] text-[#9BA9BA] font-mono tracking-tight flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              CREATIVE TECH // 2029
+              CREATIVE TECHNOLOGIST
             </span>
           </div>
         </button>

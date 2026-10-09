@@ -90,7 +90,7 @@ export function AboutSection() {
                   {PORTFOLIO_DATA.profile.education.degree} ({PORTFOLIO_DATA.profile.education.specialization})
                 </h4>
                 <p className="text-xs text-[#9BA9BA] font-mono">
-                  {PORTFOLIO_DATA.profile.education.university} · Expected {PORTFOLIO_DATA.profile.education.gradYear}
+                  {PORTFOLIO_DATA.profile.education.university}
                 </p>
               </div>
             </div>

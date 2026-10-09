@@ -2,7 +2,7 @@
 
 Hey there! 👋 
 
-I'm **Ritesh Kumar Verma**, a Computer Science student at **VIT Bhopal University** specializing in Artificial Intelligence & Machine Learning (Class of 2029).
+I'm **Ritesh Kumar Verma**, a Computer Science student at **VIT Bhopal University** specializing in Artificial Intelligence & Machine Learning.
 
 Instead of making another ordinary flat portfolio with simple cards, I wanted to build an interactive, scroll-driven 3D experience that truly represents my journey across full-stack development, AI/ML, and embedded hardware tinkering (ESP32 / IoT).
 

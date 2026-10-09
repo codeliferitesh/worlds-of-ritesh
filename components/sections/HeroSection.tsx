@@ -48,9 +48,7 @@ export function HeroSection({ onExploreClick, onConnectClick }: HeroSectionProps
           <Terminal className="w-3.5 h-3.5 text-[#FFB15E]" />
           <span>VIT Bhopal University</span>
           <span className="text-[#54E5FF]">•</span>
-          <span>B.Tech CSE (AI & ML)</span>
-          <span className="text-[#54E5FF]">•</span>
-          <span className="text-[#FFB15E]">Class of 2029</span>
+          <span className="text-[#FFB15E]">B.Tech CSE (AI & ML)</span>
         </div>
 
         {/* CTAs */}

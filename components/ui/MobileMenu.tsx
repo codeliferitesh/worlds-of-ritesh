@@ -113,7 +113,7 @@ export function MobileMenu({ isOpen, activeSection, onClose, onNavigate }: Mobil
           </a>
         </div>
         <div className="text-center font-mono text-[10px] text-[#9BA9BA]/60">
-          VIT Bhopal University · CSE (AI/ML) · Class of 2029
+          VIT Bhopal University · CSE (AI/ML)
         </div>
       </div>
     </div>

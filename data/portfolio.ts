@@ -66,7 +66,7 @@ export interface PortfolioData {
       specialization: string;
       university: string;
       school: string;
-      gradYear: string;
+      gradYear?: string;
     };
     location: string;
     statusBadge: string;
@@ -102,7 +102,6 @@ export const PORTFOLIO_DATA: PortfolioData = {
       specialization: "Artificial Intelligence and Machine Learning",
       university: "VIT Bhopal University",
       school: "School of Computing Science Engineering and Artificial Intelligence",
-      gradYear: "2029",
     },
     location: "Bhopal, India",
     statusBadge: "COMPUTER SCIENCE · AI/ML · FULL-STACK DEVELOPMENT",
@@ -415,7 +414,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
 
   journey: [
     {
-      year: "2025 – 2029",
+      year: "2025 – Present",
       period: "Current Endeavor",
       title: "B.Tech in Computer Science & Engineering (AI & ML)",
       subtitle: "Academic Core & Deep Exploration",
