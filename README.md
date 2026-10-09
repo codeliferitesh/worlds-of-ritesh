@@ -40,39 +40,6 @@ Live Demo: [riteshverma.dev](https://riteshverma.dev) *(or check it out locally 
 
 ---
 
-## 🚀 Running Locally
-
-If you want to clone this and run it on your machine:
-
-1. **Clone the repo**:
-   ```bash
-   git clone https://github.com/codeliferitesh/worlds-of-ritesh.git
-   cd worlds-of-ritesh
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start the local dev server**:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## 📦 Building for Production
-
-```bash
-npm run build
-npm run start
-```
-
----
-
 ## 📬 Let's Connect!
 
 I'm always excited to collaborate on new ideas, hackathons, or software projects. Feel free to reach out:
