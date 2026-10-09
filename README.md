@@ -46,8 +46,8 @@ If you want to clone this and run it on your machine:
 
 1. **Clone the repo**:
    ```bash
-   git clone https://github.com/codeliferitesh/ritesh-3d-portfolio.git
-   cd ritesh-3d-portfolio
+   git clone https://github.com/codeliferitesh/worlds-of-ritesh.git
+   cd worlds-of-ritesh
    ```
 
 2. **Install dependencies**:
